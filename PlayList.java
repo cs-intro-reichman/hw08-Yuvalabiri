@@ -116,17 +116,12 @@ class PlayList {
                 add(track);
                 size++;
                 return true;
-            } else if (size == 0) {
-                tracks[0] = track;
-                size++;
-                return true;
             } else {
-                for (int j = size; j >= i; j--) {
-                    tracks[j] = tracks[j - 1];
+                for (int j = size - 1; j >= i; j--) {
+                    tracks[j + 1] = tracks[j];
                 }
                 tracks[i] = track;
                 size++;
-                return true;
             }
         }
         return false;
