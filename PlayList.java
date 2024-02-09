@@ -111,20 +111,18 @@ class PlayList {
      */
     public boolean add(int i, Track track) {
         //// replace the following statement with your code
-        if (i <= size && i >= 0 && size < maxSize) {
-            if (i == size) {
-                add(track);
-                size++;
-                return true;
-            } else {
-                for (int j = size - 1; j >= i; j--) {
-                    tracks[j + 1] = tracks[j];
-                }
-                tracks[i] = track;
-                size++;
+        if (i < 0 || i > size || size == maxSize) {
+            return false;
+        }
+        if (i < size) {
+            for (int j = size; j > i; j--) {
+                tracks[j] = track[j - 1];
             }
         }
-        return false;
+        tracks[i] = track;
+        size++;
+        return true;
+
     }
 
     /**
